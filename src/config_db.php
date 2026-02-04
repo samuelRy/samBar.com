@@ -2,11 +2,11 @@
 // config.php - SAFE to commit
 return [
     'db' => [
-        'host' => getenv('DB_HOST') ?: 'localhost',
-        'port' => getenv('DB_PORT') ?: 3306,
-        'user' => getenv('DB_USER') ?: 'root',
-        'pass' => getenv('DB_PASS') ?: '',
-        'name' => getenv('DB_NAME') ?: 'my_db'
+        'host' => $_ENV('DB_HOST') ?: 'localhost',
+        'port' => $_ENV('DB_PORT') ?: 3306,
+        'user' => $_ENV('DB_USER') ?: 'root',
+        'pass' => $_ENV('DB_PASS') ?: '',
+        'name' => $_ENV('DB_NAME') ?: 'my_db'
     ]
 ];
 ?>
