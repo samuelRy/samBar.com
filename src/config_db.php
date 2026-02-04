@@ -1,10 +1,10 @@
 <?php
 // config.php - SAFE to commit
-$host = getenv('DB_HOST') ?? 'localhost';
-$port = getenv('DB_PORT') ?? 3306;
-$user = getenv('DB_USER') ?? 'root';
-$pass = getenv('DB_PASS') ?? '';
-$name = getenv('DB_NAME') ?? 'defaultdb';
+$host = $_SERVER['DB_HOST'] ?? 'localhost';
+$port = $_SERVER['DB_PORT'] ?? 3306;
+$user = $_SERVER['DB_USER'] ?? 'root';
+$pass = $_SERVER['DB_PASS'] ?? '';
+$name = $_SERVER['DB_NAME'] ?? 'defaultdb';
 return [
     'db' => [
         'host' => $host,
