@@ -25,17 +25,13 @@ $message = htmlspecialchars($_POST['message']);
 $email = $_SESSION['email'];
 
 // Prepare statement
-$stmt = $conn->prepare("INSERT INTO messages (email, message) VALUES (?, ?)");
+$stmt = $conn->prepare("INSERT INTO messages (email, ".'message'.") VALUES (?, ?)");
 
 // Bind parameters ('ss' means both are strings)
 $stmt->bind_param("ss", $email, $message);
 
 // Execute
-if ($stmt->execute()) {
-    echo "Message inserted successfully!";
-} else {
-    echo "Error: " . $stmt->error;
-}
+
 
 // Close statement and connection
 $stmt->close();
