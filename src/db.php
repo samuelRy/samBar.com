@@ -6,21 +6,36 @@ $dbname = $config['db']['name'];
 $user = $config['db']['user'];
 $pass = $config['db']['pass'];
 
-$pdo = new PDO(
-    "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-    $user,
-    $pass,
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]
-);
+$conn = new mysqli($host, $user, $pass, $dbname);
 
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    $message = htmlspecialchars($_POST['message']);
-    $ins = $pdo->prepare("INSERT INTO messages(email, ".'message'.") VALUES (:email, :t_message)");
-    $ins->execute(array('email' => $_SESSION['email'], 't_message' => $_POST["message"]));
+// Set charset to utf8mb4 (same as PDO's charset=utf8mb4)
+$conn->set_charset("utf8mb4");
 
+// Your message insertion code with mysqli prepared statements
+$message = htmlspecialchars($_POST['message']);
+$email = $_SESSION['email'];
+
+// Prepare statement (similar to PDO)
+$stmt = $conn->prepare("INSERT INTO messages (email, message) VALUES (?, ?)");
+
+// Bind parameters ('ss' means both are strings)
+$stmt->bind_param("ss", $email, $message);
+
+// Execute
+if ($stmt->execute()) {
+    echo "Message inserted successfully!";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close statement and connection
+$stmt->close();
+$conn->close();
 $_SESSION["sent"] = true;
 $_SESSION["message"]= $_POST["message"];
 header("Location: home.php");
