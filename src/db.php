@@ -1,6 +1,6 @@
 <?php
 session_start();
-$config = require 'config/config.php';
+$config = require 'config_db.php';
 $host = $config['db']['host'];
 $dbname = $config['db']['name'];
 $user = $config['db']['user'];
