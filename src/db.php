@@ -1,37 +1,47 @@
 <?php
-// db_ssl.php - WITH PROPER SSL
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+session_start();
 $config = require 'config_db.php';
-$host = 'mysql-2bca0261-elijahsamuelbarkah-ca79.a.aivencloud.com';
-$port = 16281;
-$user = 'avnadmin';
-$pass = $config['db']['pass']; // ← MUST BE CORRECT
+$host = $config['db']['host'];
 $dbname = $config['db']['name'];
+$user = $config['db']['user'];
+$pass = $config['db']['pass'];
 
-echo "Testing Aiven connection with SSL...<br>";
+// Add SSL for Aiven connection
+$conn = mysqli_init(); // Initialize instead of direct new mysqli()
 
-// Method 1: mysqli with SSL
-$conn = mysqli_init();
-
-// Set SSL options
+// Set SSL options for Aiven
 mysqli_options($conn, MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, false);
 
-// IMPORTANT: Increase timeout
-mysqli_options($conn, MYSQLI_OPT_CONNECT_TIMEOUT, 10);
-
-// Connect with SSL
-if (!mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL)) {
-    echo "SSL set failed<br>";
+// Connect with SSL (MYSQLI_CLIENT_SSL flag)
+if (!$conn->real_connect($host, $user, $pass, $dbname, $port, NULL, MYSQLI_CLIENT_SSL)) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-if ($conn->real_connect($host, $user, $pass, $dbname, $port, NULL, MYSQLI_CLIENT_SSL)) {
-    echo "✅ Connected with SSL!<br>";
-    echo "SSL Cipher: " . ($conn->get_ssl_cipher() ?: 'Not available') . "<br>";
-    echo "Server: " . $conn->server_info . "<br>";
-    $conn->close();
+// Set charset to utf8mb4
+$conn->set_charset("utf8mb4");
+
+// Your message insertion code with mysqli prepared statements
+$message = htmlspecialchars($_POST['message']);
+$email = $_SESSION['email'];
+
+// Prepare statement
+$stmt = $conn->prepare("INSERT INTO messages (email, message) VALUES (?, ?)");
+
+// Bind parameters ('ss' means both are strings)
+$stmt->bind_param("ss", $email, $message);
+
+// Execute
+if ($stmt->execute()) {
+    echo "Message inserted successfully!";
 } else {
-    echo "❌ SSL connection failed: " . mysqli_connect_error() . "<br>";
-    echo "Error code: " . mysqli_connect_errno() . "<br>";
+    echo "Error: " . $stmt->error;
 }
+
+// Close statement and connection
+$stmt->close();
+$conn->close();
+
+$_SESSION["sent"] = true;
+$_SESSION["message"]= $_POST["message"];
+header("Location: home.php");
 ?>
