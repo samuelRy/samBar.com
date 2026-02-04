@@ -1,0 +1,57 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Database credentials
+config/database.php
+config/credentials/
+secrets/
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Logs
+*.log
+logs/
+error_log
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+
+# Temp files
+*.tmp
+*.temp
+
+# Uploads (if applicable)
+/uploads/
+/storage/
+
+# Cache
+cache/
+*.cache
+
+# Compiled files
+*.compiled
+
+# Session files
+sess_*

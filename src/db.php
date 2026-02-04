@@ -1,9 +1,10 @@
 <?php
 session_start();
-$host = "localhost";
-$dbname = "samBar_com";
-$user = "root";
-$pass = "";
+$config = require 'config/config.php';
+$host = $config['db']['host'];
+$dbname = $config['db']['name'];
+$user = $config['db']['user'];
+$pass = $config['db']['pass'];
 
 $pdo = new PDO(
     "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
