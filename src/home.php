@@ -36,19 +36,20 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
 </form>
     ";
     } else {
-        echo"<div id='main-sent'>
+        echo "<div id='main-sent'>
         <div>
             <div id='sent'>Your advice has been sent to the sage</div>
             <div id='info'>Click the light to ask more</div>
         </div>
         <div id='add-num'>
-            <label for='number'>Add your number here to get your advice on WhatsApp</label>
+            <label for='number'>Add your number here to get your advice on WhatsApp
+            </label>
             <input type='tel' id='number'>
         </div>
         <button type='button' id='send-num'>Send number</button>
     </div>";
     }
-    $_SESSION["sent"] = false?>
+    $_SESSION["sent"] = false ?>
     <?php include("flame.php") ?>
     <script>
         let ask = document.querySelector("#ask");
@@ -70,23 +71,32 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
             };
         };
 
-        if (problem!=null) {
+        if (problem != null) {
             problem.addEventListener("input", () => {
-            if (problem.value.length > 2) {
-                ask.disabled = false;
-            }
-            else {
-                ask.disabled = true;
-                console.log(problem.value);
-            }
-            problem.style.height = 'auto';
-            problem.style.height = problem.scrollHeight - 40 + "px";
-        })
+                if (problem.value.length > 2) {
+                    ask.disabled = false;
+                }
+                else {
+                    ask.disabled = true;
+                    console.log(problem.value);
+                }
+                problem.style.height = 'auto';
+                problem.style.height = problem.scrollHeight - 40 + "px";
+            })
         }
-        document.querySelector("#send-num").onclick=function () {
+        if (document.querySelector("#send-num")) {
             
-            window.location.href = "sent.php?number="+document.querySelector("#number").value;
+            document.querySelector("#send-num").onclick = function () {
+    
+                window.location.href = "sent.php?number=" + document.querySelector("#number").value;
+            };
+        }
+        if (document.querySelector("#main-sent")) {
+            document.querySelector("#flame").onclick = function () {
+
+            window.location.href = "sent.php?number=" + "<?php echo $_SESSION['email'] ?>";
         };
+        }
     </script>
 </body>
 
