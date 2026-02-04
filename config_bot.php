@@ -1,0 +1,4 @@
+<?php
+$BOT_TOKEN = "8440622204:AAG74nxkPFZrPbCDLzaONhEmHxLlNLcajxM";
+$CHAT_ID = "7958189289";
+?>

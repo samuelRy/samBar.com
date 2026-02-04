@@ -1,0 +1,255 @@
+@keyframes enlight {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@font-face {
+    font-family: "Inter Perso";
+    src: url("Inter-VariableFont_opsz\,wght.ttf");
+}
+
+body {
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    font-family: 'Inter Perso', 'Courier New', Courier, monospace;
+}
+
+nav img {
+    width: 7em;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+    margin: 1em;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 0;
+    gap: 1em;
+    align-items: center;
+    mask-image: radial-gradient(circle, rgba(255, 255, 255, 0.616) 40%, transparent);
+    mask-position: 50% 100%;
+}
+
+#problem
+{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    padding: .9em .8em .7em .8em;
+    border-radius: 10px;
+    border: #ffbb0086 2px solid;
+    width: 60%;
+    max-height: 8em;
+    font-size: 1.5em;
+    scrollbar-width: none;
+    text-wrap: wrap;
+    resize: none;
+}
+
+#problem:focus
+{
+    border-radius: 10px;
+    border: #FFBB00 2px solid;
+    outline: none;
+}
+
+#ask:disabled
+{
+    cursor: auto;
+    color: grey;
+    background-color: #c964000e;
+    padding: .7em 1.2em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5em;
+    transition: transform .3s ease-in, background-color .3s ease-in, color .3s ease-in;
+}
+
+#ask
+{
+    color: white;
+    background-color: #c964003b;
+    padding: .7em 1.2em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5em;
+    transform: scale(1.01);
+    transition: transform .3s ease-in, background-color .3s ease-in, box-shadow .3s ease-in;
+}
+
+#ask:not(:disabled):hover
+{
+    background-color: #d87817;
+    transition: background-color .3s ease-in, box-shadow .3s ease-in;
+    box-shadow: #a06c3962 2px 2px 15px;
+}
+
+#flame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+}
+
+#f-image
+{
+    width: 3em;
+}
+
+#ellipse1
+{
+    position: absolute;
+    z-index: -3;
+    border-radius: 50%;
+    background-color: #FFBB00;
+    width: 7em;
+    height: 10em;
+    opacity: 0.51;
+    filter: blur(20px);
+}
+
+#ellipse2
+{
+    position: absolute;
+    top: 30%;
+    z-index: -5;
+    border-radius: 50%;
+    background-color: #FFF5D8;
+    width: 5em;
+    height: 5em;
+    opacity: 0.56;
+    filter: blur(20px);
+}
+
+#ellipsem
+{
+    position: absolute;
+    z-index: -1;
+    width: 14em;
+    height: 14em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    mask-image: radial-gradient(white 40%, transparent);
+    overflow: visible;
+}
+
+#ellipse3
+{
+    position: absolute;
+    z-index: -6;
+    border-radius: 50%;
+    background-color: #FFBB00;
+    width: 35em;
+    height: 35em;
+    opacity: 0.56;
+    filter: blur(400px);
+}
+
+button
+{
+    cursor: pointer;
+}
+
+button:disabled
+{
+    cursor: auto;
+}
+
+.enlight
+{
+    animation: enlight 1.5s ease-in-out;
+}
+
+#sent
+{
+    font-size: 3em;
+    font-weight: 400;
+}
+
+#info
+{
+    font-size: x-large;
+    font-weight: 200;
+    opacity: .5;
+}
+
+#add-num
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#main-sent
+{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+    font-size: large;
+}
+
+#main-sent div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+
+#main-sent input
+{
+    width: 100%;
+    background-color: #ffbb0007;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: .5em .9em;
+    font-size: 2em;
+    color: white;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: #d87717c4;
+}
+#sent-flame
+{
+    transform: scale(1.1);
+    transform: translateY(130%);
+}
+
+#send-num
+{
+    color: white;
+    background-color: #c964003b;
+    padding: .7em 1.2em;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5em;
+    transform: scale(1.01);
+    transition: transform .3s ease-in, background-color .3s ease-in, box-shadow .3s ease-in;
+}
+
+#send-num:hover
+{
+    background-color: #d87817;
+    transition: background-color .3s ease-in, box-shadow .3s ease-in;
+    box-shadow: #a06c3962 2px 2px 15px;
+}
