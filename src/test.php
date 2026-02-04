@@ -2,7 +2,7 @@
 // db_ssl.php - WITH PROPER SSL
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-$config = require 'config_db.php';
+
 $host = 'mysql-2bca0261-elijahsamuelbarkah-ca79.a.aivencloud.com';
 $port = 16281;
 $user = 'avnadmin';
