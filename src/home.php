@@ -10,7 +10,7 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -28,19 +28,19 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
         </a>
     </nav>
     <?php
-    // if (!isset($sent) || $sent == false) {
-    //     echo "
-    //         <form action='db.php' method='post'id='main'>
+    if (!isset($sent) || $sent == false) {
+        echo "
+            <form action='db.php' method='post'id='main'>
                 
-    //             <textarea type='text' id='problem' name='message' placeholder='Tell me what bothers you my Dear and fear not, for I shall help you find a way to your light'></textarea>
+                <textarea type='text' id='problem' name='message' placeholder='Tell me what bothers you my Dear and fear not, for I shall help you find a way to your light'></textarea>
 
-    //             <button type='submit' id='ask' disabled>Ask for advice</button>
-    //         </form>
-    // ";
-    // } else {
+                <button type='submit' id='ask' disabled>Ask for advice</button>
+            </form>
+    ";
+    } else {
         echo "<div id='main-sent'>
                 <div>
-                    <div id='sent'>Your advice has been sent to the sage</div>
+                    <div id='sent' class='speech'>Your advice has been sent to the sage</div>
                     <div id='info'>Click the light to ask more</div>
                 </div>
                 <div id='add-num'>
@@ -50,7 +50,7 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
                 </div>
                 <button type='button' id='send-num'>Send number</button>
             </div>";
-    // }
+    }
     $_SESSION["sent"] = false ?>
     <?php include("flame.php") ?>
     <script>
@@ -58,7 +58,6 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
         let problem = document.querySelector("#problem");
 
         window.onload = function () {
-            console.log("enlight");
             let a = document.querySelector("#ellipse3");
             if (!("enlight" in a.classList)) {
                 a.classList.add("enlight");
@@ -100,6 +99,7 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
             };
         }
     </script>
+    <script src="test.js"></script>
 </body>
 
 </html>

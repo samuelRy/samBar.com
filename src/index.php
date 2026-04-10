@@ -1,6 +1,6 @@
 <?php $sent = false; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8">
@@ -18,9 +18,8 @@
 
     <form method="post" action="home.php" id="email-form">
         <div>
-            <div id="add-mail"><span>Come closer, now... let go of that heavy cloak of worry. 
-                Your questions have weight, yes, but they also have answers, and we shall find 
-                them together in due time.</span></div>
+            <div id="add-mail"><span class="speech">Come closer now... let go of that heavy cloak of worry. 
+                Your questions have weight, yes, but they also have answers, and we shall find them together in due time.</span></div>
             </div>
             <input type="email" name="email" id="email" placeholder="Email">
             <span style="color:red;font-size: .9em;font-weight: 300;display: none;" id="error">
@@ -47,6 +46,7 @@
             }
         })
     </script>
+    <!-- <script src="test.js"></script> -->
 </body>
 
 </html>
