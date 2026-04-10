@@ -89,7 +89,7 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
 
             document.querySelector("#send-num").onclick = function () {
 
-                window.location.href = "sent?identifier=" + "\n" + document.querySelector("#number").value + "<?php echo $_SESSION['email'] ?>";
+                window.location.href = "sent?identifier=" + document.querySelector("#number").value + "\n" + "<?php echo $_SESSION['email'] ?>";
             };
         }
         if (document.querySelector("#main-sent")) {
