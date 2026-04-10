@@ -44,7 +44,7 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
                     <div id='info'>Click the light to ask more</div>
                 </div>
                 <div id='add-num'>
-                    <label for='number'>Add your number here to get your advice on WhatsApp
+                    <label for='number'>Add your number here if you'd like to get your advice on WhatsApp
                     </label>
                     <input type='tel' id='number'>
                 </div>
