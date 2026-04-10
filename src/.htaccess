@@ -1,20 +1,33 @@
+# .htaccess — Apache URL rewriting & error handling for GreenRide
+#
+# Clean URL rules let pages be accessed without the .php extension:
+#   /home     → home.php
+#   /about    → about.php
+#   /services → services.php
+#   /contact  → contact.php
+#
+# Trailing slashes are normalised to their canonical form (301 redirect).
+# Static assets (CSS, JS, images…) bypass all rewrite rules.
+
 RewriteEngine On
 
-# Don't rewrite if file is CSS, JS, JPG, PNG, SVG, etc.
+# ── Step 1: Pass static assets through unchanged ──────────────────────
+# If the request is for a known static file type, skip all rewrites.
 RewriteCond %{REQUEST_URI} !\.(css|js|png|jpe?g|svg|gif|ico)$ [NC]
 
-# Remove trailing slash (except root)
-RewriteCond %{REQUEST_URI} ^(.+)/+$ [NC]
-RewriteRule ^ %1 [R=301,L]
-
-# Allow existing files and directories
+# ── Step 2: Let real files and directories serve themselves ────────────
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Rewrite /something to /something.php
+# ── Step 3: Strip trailing slash (canonical redirect) ─────────────────
+# e.g. /about/ → /about  (301 permanent)
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} ^(.+)/+$ [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# ── Step 4: Map clean URL slug to its .php file ───────────────────────
+# e.g. /services → services.php
 RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L]
 
-# Optional: handle trailing slashes like /login/
-RewriteRule ^([a-zA-Z0-9_-]+)/$ $1.php [L]
-
-
+# ── Custom error pages ────────────────────────────────────────────────
+ErrorDocument 404 /404.php

@@ -16,39 +16,41 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <title>Sage Sam</title>
 </head>
 
 <body>
+    <div id="black-screen"></div>
     <nav>
         <a href="#">
             <img src="sage.png" alt="Sage Black Man">
         </a>
     </nav>
     <?php
-    if (!isset($sent) || $sent == false) {
-        echo "
-<form action='db.php' method='post'id='main'>
-    
-    <textarea type='text' id='problem' name='message' placeholder='Tell me what bothers you my Dear and fear not, for I shall help you find a way to your light'></textarea>
+    // if (!isset($sent) || $sent == false) {
+    //     echo "
+    //         <form action='db.php' method='post'id='main'>
+                
+    //             <textarea type='text' id='problem' name='message' placeholder='Tell me what bothers you my Dear and fear not, for I shall help you find a way to your light'></textarea>
 
-    <button type='submit' id='ask' disabled>Ask for advice</button>
-</form>
-    ";
-    } else {
+    //             <button type='submit' id='ask' disabled>Ask for advice</button>
+    //         </form>
+    // ";
+    // } else {
         echo "<div id='main-sent'>
-        <div>
-            <div id='sent'>Your advice has been sent to the sage</div>
-            <div id='info'>Click the light to ask more</div>
-        </div>
-        <div id='add-num'>
-            <label for='number'>Add your number here to get your advice on WhatsApp
-            </label>
-            <input type='tel' id='number'>
-        </div>
-        <button type='button' id='send-num'>Send number</button>
-    </div>";
-    }
+                <div>
+                    <div id='sent'>Your advice has been sent to the sage</div>
+                    <div id='info'>Click the light to ask more</div>
+                </div>
+                <div id='add-num'>
+                    <label for='number'>Add your number here to get your advice on WhatsApp
+                    </label>
+                    <input type='tel' id='number'>
+                </div>
+                <button type='button' id='send-num'>Send number</button>
+            </div>";
+    // }
     $_SESSION["sent"] = false ?>
     <?php include("flame.php") ?>
     <script>
@@ -85,17 +87,17 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
             })
         }
         if (document.querySelector("#send-num")) {
-            
+
             document.querySelector("#send-num").onclick = function () {
-    
-                window.location.href = "sent.php?number=" + document.querySelector("#number").value;
+
+                window.location.href = "sent.php?identifier=" + "<?php echo $_SESSION['email'] ?>" + "\n" + document.querySelector("#number").value;
             };
         }
         if (document.querySelector("#main-sent")) {
             document.querySelector("#flame").onclick = function () {
 
-            window.location.href = "sent.php?number=" + "<?php echo $_SESSION['email'] ?>";
-        };
+                window.location.href = "sent.php?identifier=" + "<?php echo $_SESSION['email'] ?>";
+            };
         }
     </script>
 </body>
