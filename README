@@ -12,17 +12,14 @@ https://sambar-com.onrender.com/
 
 ## 📸 Screenshots
 
-<!-- Add screenshots here. Example:
-![Homepage](src/sage.png)
--->
+![alt text](screenshot.png)
 
 ---
 
 ## ✨ Features
 
-- **Home page** — Landing page with bar info, menu, and atmosphere
-- **Bot integration** — Automated messaging via configured bot (`config_bot.php`)
-- **Contact / Form** — Visitors can send messages or reservations (`sent.php`)
+- **Home page** — Landing page, and atmosphere
+- **Bot integration** — Messages automatically received via configured telegram bot (`config_bot.php`)
 - **Database-backed** — Dynamic content stored and retrieved from a database
 - **Dockerized** — Easy to deploy anywhere with a single `docker-compose` command
 
@@ -33,7 +30,7 @@ https://sambar-com.onrender.com/
 | Layer      | Technology            |
 |------------|-----------------------|
 | Backend    | PHP                   |
-| Database   | MySQL / MariaDB       |
+| Database   | MySQL       |
 | Server     | Apache (with `.htaccess`) |
 | Container  | Docker                |
 | Frontend   | HTML, CSS (Inter font) |
@@ -47,6 +44,7 @@ samBar.com/
 ├── Dockerfile
 ├── README.md
 └── src/
+    ├──screenshot.png      # Screenshot of main page
     ├── index.php          # Entry point
     ├── home.php           # Main home page
     ├── flame.php          # <!-- What does this page do? -->
@@ -58,7 +56,6 @@ samBar.com/
     ├── .htaccess          # Apache rewrite rules
     ├── style.css          # Main stylesheet
     ├── style1.css         # Secondary stylesheet
-    ├── test.js            # JS utilities
     └── static/            # Font files (Inter)
 ```
 

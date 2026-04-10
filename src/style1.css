@@ -26,7 +26,7 @@
     width: 100%;
     top: 0%;
     left: 0%;
-    animation: fade-screen 5s ease-out;
+    animation: fade-screen 2s ease-out;
     z-index: -200;
 }
 
