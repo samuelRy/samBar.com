@@ -29,5 +29,5 @@ $result = curl_exec($ch);
 
 
 $_SESSION["sent"] = false;
-header("Location: home.php");
+header("Location: home");
 ?>

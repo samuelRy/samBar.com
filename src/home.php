@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_POST["email"]) && !isset($_SESSION["email"])) {
-    header("Location: index.php");
+    header("Location: index");
 }
 if (isset($_POST["email"])) {
     $_SESSION["email"] = $_POST["email"];
@@ -89,17 +89,17 @@ $sent = isset($_SESSION["sent"]) ? $_SESSION["sent"] : false;
 
             document.querySelector("#send-num").onclick = function () {
 
-                window.location.href = "sent.php?identifier=" + "<?php echo $_SESSION['email'] ?>" + "\n" + document.querySelector("#number").value;
+                window.location.href = "sent?identifier=" + "<?php echo $_SESSION['email'] ?>" + "\n" + document.querySelector("#number").value;
             };
         }
         if (document.querySelector("#main-sent")) {
             document.querySelector("#flame").onclick = function () {
 
-                window.location.href = "sent.php?identifier=" + "<?php echo $_SESSION['email'] ?>";
+                window.location.href = "sent?identifier=" + "<?php echo $_SESSION['email'] ?>";
             };
         }
     </script>
-    <script src="test.js"></script>
+    <!-- <script src="test.js"></script> -->
 </body>
 
 </html>

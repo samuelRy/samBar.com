@@ -16,7 +16,7 @@
         </a>
     </nav>
 
-    <form method="post" action="home.php" id="email-form">
+    <form method="post" action="home" id="email-form">
         <div>
             <div id="add-mail"><span class="speech">Come closer now... let go of that heavy cloak of worry. 
                 Your questions have weight, yes, but they also have answers, and we shall find them together in due time.</span></div>

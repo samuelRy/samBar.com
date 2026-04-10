@@ -39,5 +39,5 @@ $conn->close();
 
 $_SESSION["sent"] = true;
 $_SESSION["message"]= $_POST["message"];
-header("Location: home.php");
+header("Location: home");
 ?>

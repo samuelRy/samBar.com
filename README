@@ -1,0 +1,195 @@
+# samBar.com
+
+> This website is a silly one made for people to ask me for advice. The name is actually my own name but shortened (except the '.com' obviously).
+
+---
+
+## 🚀 Live Demo
+
+https://sambar-com.onrender.com/
+
+---
+
+## 📸 Screenshots
+
+<!-- Add screenshots here. Example:
+![Homepage](src/sage.png)
+-->
+
+---
+
+## ✨ Features
+
+- **Home page** — Landing page with bar info, menu, and atmosphere
+- **Bot integration** — Automated messaging via configured bot (`config_bot.php`)
+- **Contact / Form** — Visitors can send messages or reservations (`sent.php`)
+- **Database-backed** — Dynamic content stored and retrieved from a database
+- **Dockerized** — Easy to deploy anywhere with a single `docker-compose` command
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer      | Technology            |
+|------------|-----------------------|
+| Backend    | PHP                   |
+| Database   | MySQL / MariaDB       |
+| Server     | Apache (with `.htaccess`) |
+| Container  | Docker                |
+| Frontend   | HTML, CSS (Inter font) |
+
+---
+
+## 📁 Project Structure
+
+```
+samBar.com/
+├── Dockerfile
+├── README.md
+└── src/
+    ├── index.php          # Entry point
+    ├── home.php           # Main home page
+    ├── flame.php          # <!-- What does this page do? -->
+    ├── sent.php           # Form submission handler
+    ├── db.php             # Database queries
+    ├── connection.php     # Database connection
+    ├── config_db.php      # Database config (credentials)
+    ├── config_bot.php     # Bot token & settings
+    ├── .htaccess          # Apache rewrite rules
+    ├── style.css          # Main stylesheet
+    ├── style1.css         # Secondary stylesheet
+    ├── test.js            # JS utilities
+    └── static/            # Font files (Inter)
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/) installed
+- Or: PHP 8.x + Apache + MySQL installed locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/<!-- your-username -->/samBar.com.git
+cd samBar.com
+```
+
+### 2. Configure environment
+
+Copy and edit the config files:
+
+```bash
+# Edit database credentials
+nano src/config_db.php
+
+# Edit bot token and settings
+nano src/config_bot.php
+```
+
+**`config_db.php`** should contain:
+```php
+<?php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'sambar');
+define('DB_USER', 'your_user');
+define('DB_PASS', 'your_password');
+```
+
+**`config_bot.php`** should contain:
+```php
+<?php
+define('BOT_TOKEN', 'your_bot_token_here');
+define('CHAT_ID',   'your_chat_id_here');
+```
+
+> ⚠️ Never commit `config_db.php` or `config_bot.php` with real credentials. Add them to `.gitignore`.
+
+### 3. Run with Docker
+
+```bash
+docker build -t sambar .
+docker run -p 80:80 sambar
+```
+
+Or, if you have a `docker-compose.yml`:
+
+```bash
+docker-compose up -d
+```
+
+### 4. Run locally (without Docker)
+
+Place the `src/` folder in your Apache `htdocs` or `www` directory, then import the database:
+
+```bash
+mysql -u root -p sambar < database.sql
+```
+
+---
+
+## 🗄️ Database
+
+<!-- Describe your tables here. Example:
+
+| Table        | Description                        |
+|--------------|------------------------------------|
+| `messages`   | Contact form submissions           |
+| `menu_items` | Bar menu items                     |
+| `reservations` | Booking requests                 |
+
+-->
+
+---
+
+## 🤖 Bot Setup
+
+<!-- Describe how the bot works. Example:
+This project uses a Telegram bot to notify the bar owner of new form submissions.
+
+1. Create a bot via [@BotFather](https://t.me/BotFather)
+2. Copy the token to `config_bot.php`
+3. Get your `CHAT_ID` from [@userinfobot](https://t.me/userinfobot)
+-->
+
+---
+
+## 🌐 Deployment
+
+The project includes a `Dockerfile` for easy deployment on any VPS or cloud provider.
+
+```bash
+# Build and run
+docker build -t sambar .
+docker run -d -p 80:80 --name sambar sambar
+```
+
+For production, make sure to:
+- Use HTTPS (e.g., with [Certbot](https://certbot.eff.org/))
+- Set up a reverse proxy (Nginx or Apache)
+- Keep config files out of version control
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+<!-- Add your license here, e.g. MIT, proprietary, etc. -->
+
+---
+
+## 👤 Author
+
+<!-- Your name / GitHub profile link -->
